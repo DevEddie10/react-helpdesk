@@ -7,6 +7,7 @@ import {
     GET_NOTIFICATION,
     RELOAD,
     REGISTER_USER,
+    AUTH_UPDATE_USER,
     LOGOUT
 } from '../../types'
 import clienteAxios from '../../config/axios'
@@ -35,7 +36,10 @@ const AuthState = ({ children }) => {
             })
 
         } catch (error) {
-            console.log(error.response)
+            swal('Atención', `${error.response.data.message}.`, {
+                icon: 'info',
+                button: 'Aceptar'
+            });
         }
     }
 
@@ -116,7 +120,7 @@ const AuthState = ({ children }) => {
                 payload: response.data.notifications
             })
         } catch (error) {
-            console.log(error.response)
+            console.log(error)
         }
     }
 
@@ -133,7 +137,10 @@ const AuthState = ({ children }) => {
                 })
             })
         } catch (error) {
-            console.log(error.response)
+            swal('Atención', `${error.response.data.message}`, {
+                icon: 'info',
+                button: 'Aceptar'
+            })
         }
 
         setTimeout(() => {
@@ -156,7 +163,10 @@ const AuthState = ({ children }) => {
                 })
             })
         } catch (error) {
-            console.log(error.response)
+            swal('Atención', `${error.response.data.message}`, {
+                icon: 'info',
+                button: 'Aceptar'
+            })
         }
 
         setTimeout(() => {
@@ -207,6 +217,68 @@ const AuthState = ({ children }) => {
         })
     }
 
+    const authUserUpdate = async (user, data) => {
+        try {
+            const response = await clienteAxios.put(`/usuarioeditar/${user.user.id}`, data)
+
+            swal('Correcto', `${response.data.message}`, {
+                icon: 'success',
+                button: 'Aceptar'
+            }).then(() => {
+                dispatch({
+                    type: AUTH_UPDATE_USER,
+                    payload: response.data
+                })
+            })
+        } catch (error) {
+            console.log(error);
+        }
+
+        setTimeout(() => {
+            dispatch({
+                type: RELOAD
+            })
+        }, 2000);
+    }
+
+    const updateAuthPassword = async (user, data) => {
+        try {
+            const response = await clienteAxios.put(`/editarcontrasena/${user.user.id}`, data)
+
+            swal('Correcto', `${response.data.message}`, {
+                icon: 'success',
+                button: 'Aceptar'
+            }).then(() => {
+                dispatch({
+                    type: LOGOUT
+                })
+            })
+        } catch (error) {
+            console.log(error.response.data);
+        }
+    }
+
+    const uploadFile = async image => {
+        try {
+            const formData = new FormData();
+            formData.append('image', image, image.name)
+
+            const response = await clienteAxios.post(`/subiravatar`, formData)
+           
+            swal('Correcto', `${response.data.message}`, {
+                icon: 'success',
+                button: 'Aceptar'
+            }).then(() => {
+                dispatch({
+                    type: AUTH_UPDATE_USER,
+                })
+            })
+
+        } catch (error) {
+            console.log(error.response)
+        }
+    }
+
     return (
         <authContext.Provider
             value={{
@@ -224,6 +296,9 @@ const AuthState = ({ children }) => {
                 addUser,
                 updateUser,
                 deleteUser,
+                authUserUpdate,
+                updateAuthPassword,
+                uploadFile,
                 logout
             }}
         >

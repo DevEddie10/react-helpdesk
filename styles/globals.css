@@ -2,8 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Raleway', sans-serif;
   background-color: #e0e0e0;
 }
 
@@ -41,17 +40,25 @@ header, main, footer {
   width: 500px;
   height: 100px;
 }
-    
+
+@media (max-width: 500px) { 
+  .container-flex .form-flex {
+    margin-top: 150px;
+    padding: 20px;
+  }
+}
+
+/* Utilidades */
 .btn-block {
   display: block;
   width: 100%;
   font-size: 16px;
+  margin-bottom: 20px;
 }
 
 .bg-login {
   background-color: #292942;
   height: 100vh;
-  width: 100vw;
 }
 
 .bg-color {
@@ -64,6 +71,16 @@ header, main, footer {
   font-size: 25px;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.ml-1 {
+  margin-left: 10px;
+}
+
+.img-circle {
+  height: 50px;
+  width: 50px;
+  border-radius: 150px;
 }
 
 .collapsible-menu {
@@ -134,7 +151,12 @@ header, main, footer {
 }
 
 .divider-align {
-  margin-left: 10px;
+  padding: 1px 10px;
+  margin: 20px 0;
+  background-color: rgb(41, 41, 66);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 20px;
 }
 
 .padding-4 {
@@ -168,7 +190,7 @@ header, main, footer {
 }
 
 .icon-cursor {
-  cursor: pointer;
+  cursor: default;
 }
 
 .li-striped li:nth-child(odd){background-color: #f2f2f2;}

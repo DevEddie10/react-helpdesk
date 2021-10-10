@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react'
-import useRoles from '../../hooks/useRole'
-import ticketContext from '../../context/tickets/ticketContext'
+import useRoles from '../../../hooks/useRole'
+import ticketContext from '../../../context/tickets/ticketContext'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { Button, Icon } from 'react-materialize'
-import Preloader from '../../components/layout/Preloader'
+import Preloader from '../../layout/Preloader'
 
 const FormAssign = ({ setShowForm, dataAssign }) => {
     const TicketContext = useContext(ticketContext)

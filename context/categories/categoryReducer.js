@@ -7,7 +7,7 @@ import {
 
 export default (state, action) => {
     switch (action.type) {
-        case GET_CATEGORIES: 
+        case GET_CATEGORIES:
             return {
                 ...state,
                 categories: action.payload

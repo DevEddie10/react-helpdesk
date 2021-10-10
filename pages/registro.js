@@ -2,8 +2,8 @@ import { useState, useEffect, useContext } from 'react'
 import Layout from '../components/layout/Layout'
 import ticketContext from '../context/tickets/ticketContext'
 import { Row, Col, Button, Collection, Icon } from 'react-materialize'
-import TicketUsuario from '../components/tickets/TicketUsuario'
-import FormRegisterTicket from '../components/tickets/FormRegisterTicket'
+import TicketUsuario from '../components/tickets/users/TicketUsuario'
+import FormRegisterTicket from '../components/tickets/users/FormRegisterTicket'
 
 const Registro = () => {
     const TicketContext = useContext(ticketContext)
@@ -23,7 +23,7 @@ const Registro = () => {
             setTitle('Tickets registrados')
         } else {
             setShowForm(true)
-            setTitle('Nuevo ticket')
+            setTitle('Registro de ticket')
         }
     }
 

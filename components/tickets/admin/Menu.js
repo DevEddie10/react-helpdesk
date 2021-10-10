@@ -1,6 +1,11 @@
 import Link from 'next/link'
+import useCountTicket from '../../../hooks/useCountTicket'
 
 const Menu = () => {
+    const { Count } = useCountTicket()
+
+    if (!Count) return 'cargando...'
+
     return (
         <div id="card-stats">
             <div className="col s12 m6 l3">
@@ -16,7 +21,7 @@ const Menu = () => {
                         </div>
                         <div className="col s5 m5 right-align">
                             <h5 className="mb-0">Total</h5>
-                            <p className="no-margin">5</p>
+                            <p className="no-margin">{Count.asignado}</p>
                             <Link href="/monitoreo/[id]" as={`/monitoreo/2`}>
                                 <a className="white-text">
                                     <p className="no-margin"><u>Ver</u></p>
@@ -40,7 +45,7 @@ const Menu = () => {
                         </div>
                         <div className="col s5 m5 right-align">
                             <h5 className="mb-0">Total</h5>
-                            <p className="no-margin">5</p>
+                            <p className="no-margin">{Count.seguimiento}</p>
                             <Link href="/monitoreo/[id]" as={`/monitoreo/3`}>
                                 <a className="white-text">
                                     <p className="no-margin"><u>Ver</u></p>
@@ -64,7 +69,7 @@ const Menu = () => {
                         </div>
                         <div className="col s5 m5 right-align">
                             <h5 className="mb-0">Total</h5>
-                            <p className="no-margin">5</p>
+                            <p className="no-margin">{Count.cerrado}</p>
                             <Link href="/monitoreo/[id]" as={`/monitoreo/4`}>
                                 <a className="white-text">
                                     <p className="no-margin"><u>Ver</u></p>
@@ -88,7 +93,7 @@ const Menu = () => {
                         </div>
                         <div className="col s5 m5 right-align">
                             <h5 className="mb-0">Total</h5>
-                            <p className="no-margin">5</p>
+                            <p className="no-margin">{Count.terminado}</p>
                             <Link href="/monitoreo/[id]" as={`/monitoreo/7`}>
                                 <a className="white-text">
                                     <p className="no-margin"><u>Ver</u></p>

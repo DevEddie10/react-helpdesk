@@ -26,7 +26,7 @@ const statusState = ({ children }) => {
                 payload: response.data.states
             })
         } catch (error) {
-            console.log(error.response)
+            console.log(error.response.data)
         }
     }
 

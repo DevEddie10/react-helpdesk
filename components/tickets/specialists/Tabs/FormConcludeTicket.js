@@ -1,11 +1,11 @@
 import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
-import ticketContext from '../../../context/tickets/ticketContext'
+import ticketContext from '../../../../context/tickets/ticketContext'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import usePriority from '../../../hooks/usePriority'
-import useModule from '../../../hooks/useModule'
-import useSolution from '../../../hooks/useSolution'
+import usePriority from '../../../../hooks/usePriority'
+import useModule from '../../../../hooks/useModule'
+import useSolution from '../../../../hooks/useSolution'
 
 const FormConcludeTicket = ({ dataTicket }) => {
     const TicketContext = useContext(ticketContext)

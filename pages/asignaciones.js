@@ -2,7 +2,7 @@ import { useEffect, useContext } from 'react'
 import Layout from '../components/layout/Layout'
 import ticketContext from '../context/tickets/ticketContext'
 import { Collection } from 'react-materialize'
-import Asignacion from '../components/tickets/asignaciones/Asignacion'
+import Asignacion from '../components/tickets/specialists/Asignacion'
 
 const Asignaciones = () => {
     const TicketContext = useContext(ticketContext)

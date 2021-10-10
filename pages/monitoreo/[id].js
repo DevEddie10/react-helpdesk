@@ -8,8 +8,7 @@ const Monitoreo = () => {
     const [tickets, setTickets] = useState([])
     const router = useRouter()
     const { query: { id } } = router
-    const [showCommentaries, setShowCommentaries] = useState(false)
-    
+   
     useEffect(() => {
         if (id) {
             ((async () => {
@@ -40,11 +39,16 @@ const Monitoreo = () => {
                         <li key={ticket.id} className="collection-item avatar">
                             <div className="row">
                                 <div className="col s12 xl6">
-                                    <img src="/img/user.png" alt="" className="circle" />
-                                    <span className="card-title">Usuario: {ticket.user.name}</span>
-                                    <p><b>Ticket #: </b>{ticket.id}</p>
+                                    {ticket.specialist.image ? (
+                                        <img src={`${process.env.urlImage}${ticket.specialist.image}`} alt="" className="circle" />
+                                    ) : (
+                                        <img src="/img/user.png" alt="" className="circle" />
+                                    )}
+
+                                    <span className="chip">Especialista: <b>{ticket.specialist.name}</b></span>
+                                    <p><b>Ticket: </b># {ticket.id}</p>
+                                    <p><b>Usuario: </b>{ticket.user.name}</p>
                                     <p><b className="truncate">Descripción: </b>{ticket.description}</p>
-                                    <p><b>Especialista: </b>{ticket.specialist.name}</p>
                                     <p><b>Categoría: </b>{ticket.category.name}</p>
                                     <p><b>Medio: </b>{ticket.medio.name}</p>
                                     <p><b>Estado: </b>{ticket.state.name}</p>
@@ -55,13 +59,9 @@ const Monitoreo = () => {
                                         null
                                     ) : (
                                         <>
-                                            {showCommentaries ? (
-                                                <>
-                                                    {ticket.commentaries.map((commentary, index) => (
-                                                         <p key={commentary.id}><b>{index + 1}: </b>{commentary.description}</p>
-                                                    ))}
-                                                </>
-                                            ) : null}
+                                            {ticket.commentaries.map((commentary, index) => (
+                                                <p key={commentary.id}><b>{index + 1}: </b>{commentary.description}</p>
+                                            ))}
                                         </>
                                     )}
                                 </div>
@@ -74,7 +74,7 @@ const Monitoreo = () => {
                                     </a>
                                 </Link>
                             ) : (
-                                <a className="icon-cursor secondary-content" onClick={() => setShowCommentaries(!showCommentaries)}>
+                                <a className="icon-cursor secondary-content">
                                     <i className="material-icons green-text">comment</i>
                                 </a>
                             )}

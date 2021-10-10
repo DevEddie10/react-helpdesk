@@ -24,7 +24,7 @@ const Nav = ({ user, logout }) => {
         <Navbar
             className="bg-color"
             alignLinks="right"
-            brand={<Link href="/"><a className="brand-logo"><b>Hola {user ? user.user.name : null}</b></a></Link>}
+            brand={<Link href="/"><a className="brand-logo ml-1"><b>Hola {user ? user.user.name : null}</b></a></Link>}
             id="mobile-nav"
             menuIcon={<Icon>menu</Icon>}
             options={{
@@ -85,7 +85,7 @@ const Nav = ({ user, logout }) => {
                         ))}
                     </>
                 )}
-                
+
                 <Divider />
                 {notifications.length > 0 && (
                     <a
@@ -123,12 +123,18 @@ const Nav = ({ user, logout }) => {
                 }}
                 trigger={<a><Icon>more_vert</Icon></a>}
             >
-                <a>
-                    <Icon className="black-text">person</Icon>Perfil
-                </a>
-                <a>
-                    <Icon className="black-text">edit</Icon>Editar
-                </a>
+                <Link href="/perfil">
+                    <a>
+                        <Icon className="black-text">person</Icon>Perfil
+                    </a>
+                </Link>
+
+                <Link href="/editarusuario">
+                    <a>
+                        <Icon className="black-text">edit</Icon>Editar
+                    </a>
+                </Link>
+
                 <Divider />
                 <a
                     onClick={() => logout()}

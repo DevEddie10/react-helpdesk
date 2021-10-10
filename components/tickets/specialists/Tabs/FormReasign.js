@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { useRouter } from 'next/router'
-import ticketContext from '../../../context/tickets/ticketContext'
-import useRole from '../../../hooks/useRole'
+import ticketContext from '../../../../context/tickets/ticketContext'
+import useRole from '../../../../hooks/useRole'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 

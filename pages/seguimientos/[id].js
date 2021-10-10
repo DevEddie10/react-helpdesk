@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
 import Layout from '../../components/layout/Layout'
 import ticketContext from '../../context/tickets/ticketContext'
-import Tracking from '../../components/tickets/Tracking'
+import Tracking from '../../components/tickets/specialists/Tracking'
 import Error404 from '../../components/layout/Error404'
 
 const Seguimiento = () => {

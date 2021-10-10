@@ -18,6 +18,14 @@ const User = ({ user, setShowForm, setTitle, setDataState }) => {
             <td>{user.id}</td>
             <td>{user.name}</td>
             <td>{user.email}</td>
+            <td>{user.roles.map(role => (
+                role ? (
+                    <p key={role.name}>{role.display_name}</p>
+                ) : (
+                    <p>Sin permiso</p>
+                )
+
+            ))}</td>
             <td>
                 <Button
                     className="blue"

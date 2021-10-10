@@ -1,10 +1,9 @@
 import { useState, useEffect, useContext } from 'react'
 import Layout from '../components/layout/Layout'
 import ticketContext from '../context/tickets/ticketContext'
-import { Table } from 'react-materialize'
-import Ticket from '../components/dashboard/Ticket'
-import Menu from '../components/dashboard/Menu'
-import FormAssign from '../components/dashboard/FormAssign'
+import Ticket from '../components/tickets/admin/Ticket'
+import Menu from '../components/tickets/admin/Menu'
+import FormAssign from '../components/tickets/admin/FormAssign'
 
 const Dashboard = () => {
     const TicketContext = useContext(ticketContext)
@@ -19,7 +18,6 @@ const Dashboard = () => {
     return (
         <Layout>
             <Menu />
-            
             {showForm ? (
                 <FormAssign
                     setShowForm={setShowForm}
@@ -35,30 +33,16 @@ const Dashboard = () => {
                                     <p>Total Asignados: {alltickets.length}</p></span>
                             )}
 
-                            <Table responsive={true}>
-                                <thead className="grey lighten-3">
-                                    <tr>
-                                        <th>Ticket</th>
-                                        <th>Nombre</th>
-                                        <th>Descripción</th>
-                                        <th>Categoría</th>
-                                        <th>Medio</th>
-                                        <th>Estado</th>
-                                        <th>Asignar</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    {alltickets.map(ticket => (
-                                        <Ticket
-                                            key={ticket.id}
-                                            ticket={ticket}
-                                            setShowForm={setShowForm}
-                                            setDataAssign={setDataAssign}
-                                        />
-                                    ))}
-                                </tbody>
-                            </Table>
+                            <ul className="collection li-striped">
+                                {alltickets.map(ticket => (
+                                    <Ticket
+                                        key={ticket.id}
+                                        ticket={ticket}
+                                        setShowForm={setShowForm}
+                                        setDataAssign={setDataAssign}
+                                    />
+                                ))}
+                            </ul>
                         </>
                     ) : (
                         <h1 className="title-header red-text text-darken-2">

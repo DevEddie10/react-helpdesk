@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import InformationTicket from './Tabs/InformationTicket'
+import InformationTicket from '../specialists/Tabs/InformationTicket'
 import FormCommentary from './Tabs/FormCommentary'
 import FormReasign from './Tabs/FormReasign'
 import FormConcludeTicket from './Tabs/FormConcludeTicket'

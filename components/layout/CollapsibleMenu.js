@@ -78,6 +78,24 @@ const CollapsibleMenu = ({ user }) => {
                                         <a className="collapsible-menu">* Listado de tickets</a>
                                     </Link>
                                 </div>
+
+                                <div>
+                                    <Link href="/dashboard">
+                                        <a className="collapsible-menu">* Busqueda por ticket</a>
+                                    </Link>
+                                </div>
+
+                                <div>
+                                    <Link href="/busquedausuario">
+                                        <a className="collapsible-menu">* Busqueda por usuario</a>
+                                    </Link>
+                                </div>
+
+                                <div>
+                                    <Link href="/busquedaespecialista">
+                                        <a className="collapsible-menu">* Busqueda por especialista</a>
+                                    </Link>
+                                </div>
                             </CollapsibleItem>
                         ) : null}
                     </Collapsible>
@@ -118,12 +136,6 @@ const CollapsibleMenu = ({ user }) => {
                                 <div>
                                     <Link href="/usuarios">
                                         <a className="collapsible-menu">* Listado</a>
-                                    </Link>
-                                </div>
-
-                                <div>
-                                    <Link href="/usuarios">
-                                        <a className="collapsible-menu">* Permisos</a>
                                     </Link>
                                 </div>
                             </CollapsibleItem>

@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import Layout from '../../components/layout/Layout'
 import { useRouter } from 'next/router'
 import clienteAxios from '../../config/axios'
-import FormReactivate from '../../components/tickets/Tabs/terminados/FormReactivate'
-import FormClose from '../../components/tickets/Tabs/terminados/FormClose'
-import ResumeTicket from '../../components/tickets/Tabs/terminados/ResumeTicket'
+import FormReactivate from '../../components/tickets/admin/Tabs/FormReactivate'
+import FormClose from '../../components/tickets/admin/Tabs/FormClose'
+import ResumeTicket from '../../components/tickets/admin/Tabs/ResumeTicket'
 
 const Terminados = () => {
     const router = useRouter()

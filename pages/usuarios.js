@@ -51,6 +51,7 @@ const Usuarios = () => {
                                     <th>#</th>
                                     <th>Nombre</th>
                                     <th>Email</th>
+                                    <th>Permiso</th>
                                     <th>Editar</th>
                                     <th>Eliminar</th>
                                 </tr>

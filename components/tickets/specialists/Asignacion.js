@@ -1,27 +1,41 @@
 import Link from 'next/link'
 import { CollectionItem, Icon } from 'react-materialize'
+import Moment from 'react-moment';
+import 'moment/locale/es'
 
 const Asignacion = ({ assign }) => {
 
     return (
         <CollectionItem className="avatar">
-            <img
-                alt="Not found"
-                className="circle"
-                src="img/user.png"
-            />
+            {assign.user && assign.user.image ? (
+                <img
+                    alt="Not found"
+                    className="circle"
+                    src={`${process.env.urlImage}${assign.user.image}`}
+                />
+            ) : (
+                <img
+                    alt="Not found"
+                    className="circle"
+                    src="img/user.png"
+                />
+            )}
 
-            <span className="card-title">Ticket #: {assign.id}</span>
+            <div className="mb-1">
+                <span className="chip">Usuario: <b>{assign.user.name}</b></span>
+                <p className="card-title"><b>Ticket #: </b>{assign.id} - <Moment fromNow>{assign.created_at}</Moment></p>
+            </div>
 
             <div className="row">
+                <div className="col s12 mb-1">
+                    <p><b >Descripción: </b>{assign.description}</p>
+                </div>
                 <div className="col s12 xl6">
-                    <p><b>Usuario: </b>{assign.user.name}</p>
-                    <p align="justify"><b className="truncate">Descripción: </b>{assign.description}</p>
                     <p><b>Categoría: </b>{assign.category.name}</p>
+                    <p><b>Medio: </b>{assign.medio.name}</p>
                 </div>
 
                 <div className="col s12 xl6">
-                    <p><b>Medio: </b>{assign.medio.name}</p>
                     <p><b>Estado: </b>{assign.state.name}</p>
                     {(() => {
                         switch (assign.status) {

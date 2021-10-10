@@ -4,6 +4,7 @@ import {
     GET_NOTIFICATION,
     RELOAD,
     REGISTER_USER,
+    AUTH_UPDATE_USER,
     LOGOUT
 } from '../../types'
 import router from 'next/router'
@@ -46,6 +47,11 @@ export default (state, action) => {
                 token: null,
                 authenticated: null,
                 user: null
+            }
+        case AUTH_UPDATE_USER:
+            return {
+                ...state,
+                reload: true
             }
         default:
             return state;

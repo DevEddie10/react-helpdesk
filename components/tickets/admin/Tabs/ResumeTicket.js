@@ -1,21 +1,31 @@
-import Preloader from '../../../../components/layout/Preloader'
+import Preloader from '../../../layout/Preloader'
+import Moment from 'react-moment'
+import 'moment/locale/es'
 
 const ResumeTicket = ({ tickets }) => {
     if (Object.keys(tickets).length === 0) return <Preloader />
-
+    
     return (
         <div>
             <ul className="collection">
                 <li className="collection-item avatar">
-                    <img src="/img/user.png" alt="" className="circle" />
-                    <span className="card-title">Usuario: {tickets.user.name}</span>
-                    <p><b>Descripción: </b> {tickets.description}</p>
+                    {tickets.user.image ? (
+                        <img src={`${process.env.urlImage}${tickets.user.image}`} alt="" className="circle" />
+                    ) : (
+                        <img src="/img/user.png" alt="" className="circle" />
+                    )}
+
+                    <div className="mb-1">
+                        <span className="card-title">Usuario: {tickets.user.name}</span>
+                        <p><b>Descripción: </b> {tickets.description}</p>
+                    </div>
 
                     <div className="row">
                         <div className="col s12 xl6">
                             <p><b>Ticket #: </b> {tickets.id}</p>
                             <p><b>Especialista: </b> {tickets.specialist.name}</p>
                             <p><b>Categoría: </b> {tickets.category.name}</p>
+                            <p><b>Fecha: </b> <Moment fromNow>{tickets.created_at}</Moment></p>
                         </div>
 
                         <div className="col s12 xl6">
@@ -50,8 +60,9 @@ function TableCommentaries({ commentaries }) {
                 <tr>
                     <th>#</th>
                     <th>Especialista</th>
+                    <th></th>
                     <th>Descripción</th>
-                    <th>Creación</th>
+                    <th>Fecha</th>
                 </tr>
             </thead>
 
@@ -60,8 +71,15 @@ function TableCommentaries({ commentaries }) {
                     <tr key={commentary.id}>
                         <td>{index + 1}</td>
                         <td>{commentary.specialist.name}</td>
+                        <td>
+                            {commentary.specialist.image ? (
+                                <img src={`${process.env.urlImage}${commentary.specialist.image}`} alt="especialista" className="responseive-img img-circle" />
+                            ) : (
+                                <img src="/img/user.png" alt="sin especialista" className="responseive-img img-circle" height="50" width="50" />
+                            )}
+                        </td>
                         <td>{commentary.description}</td>
-                        <td>{commentary.created_at}</td>
+                        <td><Moment fromNow>{commentary.created_at}</Moment></td>
                     </tr>
                 ))}
             </tbody>

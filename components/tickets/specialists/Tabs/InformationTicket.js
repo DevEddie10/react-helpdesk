@@ -1,5 +1,7 @@
 import { Collection, CollectionItem, Icon } from 'react-materialize'
-import Preloader from '../../../components/layout/Preloader'
+import Preloader from '../../../../components/layout/Preloader'
+import Moment from 'react-moment'
+import 'moment/locale/es'
 
 const InformationTicket = ({ dataTicket }) => {
 
@@ -9,18 +11,36 @@ const InformationTicket = ({ dataTicket }) => {
         <>
             <Collection>
                 <CollectionItem className="avatar">
-                    <img
-                        alt="Not found"
-                        className="circle"
-                        src="/img/user.png"
-                    />
+                    {dataTicket.user && dataTicket.user.image ? (
+                        <img
+                            alt="Not found"
+                            className="circle"
+                            src={`${process.env.urlImage}${dataTicket.user.image}`}
+                        />
+                    ) : (
+                        <img
+                            alt="Not found"
+                            className="circle"
+                            src="img/user.png"
+                        />
+                    )}
 
-                    <span className="card-title">Usuario: {dataTicket.user.name}</span>
-                    <p><b>Ticket #: </b>{dataTicket.id}</p>
-                    <p><b>Descripción: </b>{dataTicket.description}</p>
-                    <p><b>Categoría: </b>{dataTicket.category.name}</p>
-                    <p><b>Medio: </b>{dataTicket.medio.name}</p>
-                    <p><b>Estado: </b>{dataTicket.state.name}</p>
+                    <span className="chip">Usuario: <b>{dataTicket.user.name}</b></span>
+
+                    <div className="col s12 mb-1">
+                        <p><b>Descripción: </b>{dataTicket.description}</p>
+                    </div>
+
+                    <div className="col s12 l6">
+                        <p><b>Ticket #: </b>{dataTicket.id}</p>
+                        <p><b>Categoría: </b>{dataTicket.category.name}</p>
+                    </div>
+
+                    <div className="col s12 l6 mb-1">
+                        <p><b>Medio: </b>{dataTicket.medio.name}</p>
+                        <p><b>Estado: </b>{dataTicket.state.name}</p>
+                    </div>
+
                     <a className="secondary-content">
                         <Icon className="green-text text-darken-2">done</Icon>
                     </a>
@@ -29,8 +49,8 @@ const InformationTicket = ({ dataTicket }) => {
 
             {dataTicket.commentaries.length > 0 ? (
                 <>
-                    <div className="grey lighten-1 white-text mb-2">
-                        <b className="divider-align">Comentarios</b>
+                    <div className="divider-align">
+                        <p>Comentarios</p>
                     </div>
 
                     <table className="responsive-table">
@@ -39,7 +59,7 @@ const InformationTicket = ({ dataTicket }) => {
                                 <th>#</th>
                                 <th>Especialista</th>
                                 <th>Seguimientos</th>
-                                <th>Creación</th>
+                                <th>Fecha</th>
                                 <th>Estado</th>
                             </tr>
                         </thead>
@@ -54,7 +74,7 @@ const InformationTicket = ({ dataTicket }) => {
                                         <td>{commentary.specialist.name}</td>
                                     )}
                                     <td><p>{commentary.description}</p></td>
-                                    <td><p>{commentary.created_at}</p></td>
+                                    <td><p><Moment fromNow>{commentary.created_at}</Moment></p></td>
                                     <td>
                                         {(() => {
                                             switch (commentary.status) {
@@ -81,7 +101,6 @@ const InformationTicket = ({ dataTicket }) => {
                     <b>No hay seguimientos</b>
                 </span>
             )}
-
         </>
     )
 }

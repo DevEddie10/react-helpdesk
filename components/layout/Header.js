@@ -7,13 +7,13 @@ import SideNavMenu from './SideNavMenu'
 const Header = () => {
 
     const AuthContext = useContext(authContext)
-    const { token, userAuthentication, user, logout } = AuthContext
+    const { token, userAuthentication, user, logout, reload } = AuthContext
 
     useEffect(() => {
         if (token) {
             userAuthentication()
         }
-    }, [])
+    }, [reload])
 
     return (
         <header>

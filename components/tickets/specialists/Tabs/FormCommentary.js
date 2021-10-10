@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import ticketContext from '../../../context/tickets/ticketContext'
+import ticketContext from '../../../../context/tickets/ticketContext'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
